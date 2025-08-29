@@ -58,17 +58,17 @@ async def inline_waifu_gallery(client, iq: InlineQuery):
                 results.append(
                     InlineQueryResultCachedPhoto(
                         id=str(wid),
-                        photo_file_id=media_file,           # fixed param
-                        input_message_content=InputTextMessageContent(caption)
+                        photo_file_id=media_file,
+                        caption=caption    # ✅ send photo with caption
                     )
                 )
             elif media_type in ("video", "animation"):
                 results.append(
                     InlineQueryResultCachedVideo(
                         id=str(wid),
-                        video_file_id=media_file,           # fixed param
+                        video_file_id=media_file,
                         title=f"{name} [{rarity}]",
-                        input_message_content=InputTextMessageContent(caption)
+                        caption=caption    # ✅ send video with caption
                     )
                 )
         except Exception as e:
